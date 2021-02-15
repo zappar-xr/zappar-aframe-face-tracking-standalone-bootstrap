@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://aframe.io/releases/1.0.3/aframe.min.js"></script>
+    <script src="https://libs.zappar.com/zappar-aframe/0.3.6/zappar-aframe.js"></script>
+    
+    <title>Zappar for A-Frame</title>
+    <style>
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <a-scene>
+        <a-assets>
+            <img id="face-mesh-template" src="faceMeshTemplate.png"/>
+        </a-assets>
+
+        <a-entity camera zappar-camera="user-facing: true;"></a-entity>
+        
+        <a-entity zappar-face id="face-group">
+
+            <!-- PLACE 3D OBJECTS HERE TO TRACK FROM THE CENTER OF THE FACE -->
+            <a-box scale="0.2 0.2 0.2"></a-box>
+
+            <!-- AND/OR USE USE A FACE MESH OBJECT THAT FITS TO THE FACE AS THE USER'S EXPRESSION CHANGES -->
+            <a-entity geometry="primitive: face-mesh; face: #face-group" material="src:#face-mesh-template; transparent: true;"></a-entity>
+            
+        </a-entity>
+    </a-scene>
+</body>
+
+</html>
